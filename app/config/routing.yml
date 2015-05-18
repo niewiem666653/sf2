@@ -1,0 +1,8 @@
+components_gallery:
+    resource: "@ComponentsGalleryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
