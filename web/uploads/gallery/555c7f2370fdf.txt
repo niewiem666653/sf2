@@ -1,0 +1,45 @@
+DF_developerzy          
+id_developera           INTEGER         NOTNULL
+imie                    VARCHAR(40)     NOTNULL
+nazwisko                VARCHAR(40)     NOTNULL
+numer_telefonu          TELEFON(16)     NOTNULL
+
+DF_oferty               
+id_oferty               INTEGER         NOTNULL
+numer_oferty            INTEGER         NOTNULL
+tytuł                   VARCHAR(60)     NOTNULL
+opis                    VARCHAR(60)     NOTNULL
+data_wystawienia        DATE            NOTNULL
+
+DF_mieszkania
+id_mieszkania           INTEGER         NOTNULL
+powierzchnia            INTEGER         NOTNULL
+numer_mieszkania        VARCHAR(4)      NOTNULL
+ilosc_pomieszczen       INTEGER         NOTNULL
+cena                    INTEGER         NOTNULL
+
+DF_budynki
+id_budynku              INTEGER         NOTNULL
+numer_budynku           VARCHAR(4)      NOTNULL
+cena                    INTEGER         
+
+DF_inwestycje
+id_inwestycji
+numer_inwestycji
+nazwa
+opis
+
+DF_pomieszczenia_dodatkowe
+id_pomieszczenia
+numer_pomieszczenia
+powierzchnia
+opis
+
+DF_klienci
+imie
+nazwisko
+numer_telefonu
+
+
+
+

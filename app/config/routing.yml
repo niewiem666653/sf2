@@ -2,6 +2,13 @@ components_gallery:
     resource: "@ComponentsGalleryBundle/Controller/"
     type:     annotation
     prefix:   /
+components_gallery_handler:
+    resource: "@ComponentsGalleryBundle/Utils/UploadHandler.php"
+    type:     annotation
+
+oneup_uploader:
+    resource: .
+    type: uploader
 
 app:
     resource: "@AppBundle/Controller/"

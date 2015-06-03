@@ -1,0 +1,129 @@
+{% extends 'ComponentsGalleryBundle::base.html.twig' %}
+{% block body %}
+
+    <div id="main">
+        <div id="file-manager" class="container-fluid">
+            <div id="file-manager-dirs" class="col-lg-2 col-xs-4 col-sm-4">
+                {% for dir in dirs %}
+                    <div class="btn-default  btn-sm" data-dir="{{ dir }}">{{ dir }}</div>
+                {% endfor %}
+
+            </div>
+            <div id="left" class="col-lg-6 col-xs-4 col-sm-4">
+                <div id="file-manager-files">
+
+                    {% for file in files %}
+                        <div class="btn-default  btn-sm"> {{ file }} </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-4 col-sm-4">
+
+                <div class="box-image">
+                    <div class="ajax-loader"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <a href="{{ path('file_manager') }}/">asdad</a>
+
+{% endblock %}
+{% block js %}
+   {{ parent() }}
+    <script>
+        $(document).ready(function() {
+
+            function convertUrlPlus (url) {
+                url = url.toString();
+                url = url.replace(/\//g, '+');
+                return url;
+            }
+
+            $('#file-manager-dirs .btn-default').on('click', function() {
+                currentDir = $(this).text();
+                currentDirName = $(this).text();
+//                console.log(convertUrlPlus(currentDir));
+                $('#file-manager-dirs .btn-default').removeClass('active');
+                $(this).addClass('active');
+
+                $.ajax({
+                    method: "POST",
+                    url: "{{ path('files_list') }}" +'/'+ currentDir,
+                    success: function( data ){
+
+                        $('#file-manager-files').fadeOut('fast', function () {
+
+                            $('#file-manager-files').remove();
+                            $('#left').append('<div id="file-manager-files">');
+
+                            $.each(data, function(i, item)
+                            {
+                                console.log( item);
+                                $('#file-manager-files')
+                                        .append(
+                                        $('<div class="btn-default btn-sm">').text(item).fadeIn('fast')
+
+                                );
+
+
+                            });
+                            $('#file-manager-files div').on('click', function() {
+                                currentFileName = $(this).text();
+//                                    console.log(currentFile);
+//                                    console.log(currentdirName);
+
+                                currentImage = "{{ asset('uploads') }}/" + currentDirName +'/'+ currentFileName;
+
+                                {#<img src="{{ asset('bundles/acmedemo/img/weather_icons/blizzard.gif') }}" />#}
+                                $('#file-manager-files .btn-default').removeClass('active');
+
+                                $(this).addClass('active');
+
+                                $('.box-image img').remove();
+                                $('.box-image').append('<img>');
+                                $('.box-image img').attr("src", currentImage);
+
+
+                            });
+
+
+                        });
+
+
+                    }
+
+                })
+                        .done(function( data ) {
+
+
+
+
+
+
+
+                        });
+
+
+                {#$.post( "{{ path('files_list') }}" +'/'+ convertUrlPlus(currentDir), function( data ) {#}
+                    {##}
+                    {#$.load()#}
+                {#}, 'json');#}
+
+
+
+                {#arg = "{{ path('file_manager') }}" + '/' + convertUrlPlus(currentDir) + " #file-manager";#}
+                {#$('#main').load(arg, function(request){#}
+                    {#console.log(request);#}
+                {#});#}
+                {#$.get()#}
+
+
+
+            });
+
+
+        });
+    </script>
+{% endblock %}

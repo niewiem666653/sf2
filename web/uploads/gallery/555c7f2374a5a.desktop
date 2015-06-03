@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Sid Meiers Civilization Beyond Earth
+Exec=env WINEPREFIX="/home/ssss/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/ssss/.wine/dosdevices/c:/users/Public/Pulpit/Sid\\ Meiers\\ Civilization\\ Beyond\\ Earth.lnk
+Type=Application
+StartupNotify=true
+Path=/home/ssss/.wine/dosdevices/c:/Program Files (x86)/Sid Meiers Civilization Beyond Earth
+Icon=4E29_CivilizationBe_DX11.0

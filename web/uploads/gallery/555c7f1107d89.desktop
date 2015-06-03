@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Microsoft Outlook 2010
+Comment=PlayOnLinux
+Type=Application
+Exec=/usr/share/playonlinux/playonlinux --run "Microsoft Outlook 2010" %F
+Icon=/home/ssss/.PlayOnLinux//icones/full_size/Microsoft Outlook 2010
+Name[fr_FR]=Microsoft Outlook 2010
+StartupWMClass=OUTLOOK.EXE
+Categories=Network;Email;

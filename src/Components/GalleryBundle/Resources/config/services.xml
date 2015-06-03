@@ -13,4 +13,22 @@
         </service>
     </services>
     -->
+    <parameters>
+        <parameter key="file_manager.class">Components\GalleryBundle\FileManager\ListFile</parameter>
+
+    </parameters>
+    <services>
+        <service id="components_gallery.upload_listener" class="Components\GalleryBundle\EventListener\UploadListener">
+            <argument type="service" id="doctrine" />
+            <tag name="kernel.event_listener" event="oneup_uploader.post_persist" method="onUpload" />
+        </service>
+        <service id="components_gallery.root_dir" class="Components\GalleryBundle\ComponentsGalleryBundle">
+            <argument type="service" id="kernel" />
+            <argument>%kernel.root_dir%</argument>
+        </service>
+        <service id="list_file" class="%file_manager.class%">
+
+        </service>
+    </services>
 </container>
+
